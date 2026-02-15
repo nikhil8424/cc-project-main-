@@ -2,13 +2,11 @@ import React from "react";
 import {
   defer,
   useLoaderData,
-  useOutletContext,
   Await,
   Link,
 } from "react-router-dom";
 // import { requireAuth } from "../utils";
 import { fetchSavedPosts } from "../services/firebase";
-import Pin from "./Pin";
 
 export async function loader({ params }) {
   //   console.log(params);
@@ -27,8 +25,6 @@ const Saved = ({ post }) => {
 };
 
 const SavedPosts = () => {
-  const userId = useOutletContext();
-
   const loaderDataPromise = useLoaderData();
 
   return (

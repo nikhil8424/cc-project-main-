@@ -413,7 +413,7 @@ export async function savePost(postLink, postId) {
         postDocRef.get(),
     ]);
 
-    const [userData, postData] = await Promise.all([
+    const [userData] = await Promise.all([
         userDoc.data(),
         postDoc.data(),
     ]);
@@ -464,7 +464,7 @@ export async function likePost(postId) {
         postDocRef.get(),
     ]);
 
-    const [userData, postData] = await Promise.all([
+    const [, postData] = await Promise.all([
         userDoc.data(),
         postDoc.data(),
     ]);

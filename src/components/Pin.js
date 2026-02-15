@@ -17,7 +17,7 @@ const Pin = ({ pin }) => {
       setIsSaved(res);
     }
     checkIfSavedHelper();
-  }, []);
+  }, [pin.postId]);
 
   const handleSaveClick = async (postUrl, postId) => {
     setLoading(true);

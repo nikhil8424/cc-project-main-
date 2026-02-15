@@ -7,20 +7,18 @@ const LikeButton = ({ postId }) => {
   const [likeCount, setLikeCount] = useState(0);
 
   useEffect(() => {
+    async function checkIfLikedHelper() {
+      const [, likeCount] = await checkIfLiked(postId);
+      setLikeCount(likeCount);
+    }
     checkIfLikedHelper();
-  }, []);
-
-  async function checkIfLikedHelper() {
-    const [isUserLiked, likeCount] = await checkIfLiked(postId);
-    setIsLiked(isUserLiked);
-    setLikeCount(likeCount);
-  }
+  }, [postId]);
 
   async function handleLikeClick() {
     await likePost(postId);
     setIsLiked((prev) => !prev);
     //setting new updated like count
-    const [isUserLiked, likeCount] = await checkIfLiked(postId);
+    const [, likeCount] = await checkIfLiked(postId);
     setLikeCount(likeCount);
   }
 
